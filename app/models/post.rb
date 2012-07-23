@@ -15,5 +15,5 @@ class Post < ActiveRecord::Base
   validates_uniqueness_of :url
   validates_presence_of :title, :url
 
-  paginates_per 2
+  paginates_per 5
 end
