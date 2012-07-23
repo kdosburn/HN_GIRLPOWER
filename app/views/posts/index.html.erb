@@ -10,7 +10,7 @@
     <th></th>
     <th></th>
   </tr>
-  <%= paginate @posts %>
+
   <% @posts.each do |post| %>
     <tr>
       <td><%= post.title %></td>
@@ -22,5 +22,9 @@
 
   <% end %>
 </table>
+
+<%= paginate @posts %>
+
+
 
 <br /> <%= link_to 'Submit a new Post!', new_post_path %>

@@ -1,6 +1,12 @@
 Hnclone::Application.routes.draw do
 
+  root :to => 'posts#index'
+
+  get "users/new"
+
  resources :posts
+
+
 
 
   # The priority is based upon order of creation:
