@@ -11,9 +11,15 @@
 
 class Post < ActiveRecord::Base
   attr_accessible :title, :url
+  has_many :votes
 
   validates_uniqueness_of :url
   validates_presence_of :title, :url
 
   paginates_per 4
+
+  def been_15min?
+    @post = Post.find(params[:id])
+     (Time.now - @post.created_at) < 900
+   end
 end

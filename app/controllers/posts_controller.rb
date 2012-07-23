@@ -6,8 +6,14 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+
+
   def edit
-    @post = Post.find(params[:id])
+    if self.been_15min?
+      @post = Post.find(params[:id])
+    else
+      render action: "show"
+    end
   end
 
   def index
