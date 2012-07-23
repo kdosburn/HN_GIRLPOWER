@@ -1,2 +1,20 @@
-<h1>Posts#_form</h1>
-<p>Find me in app/views/posts/_form.html.erb</p>
+<p>THIS IS OUR AWSOME FORM</p>
+
+<%= form_for(@post) do |p| %>
+
+  <div class="field">
+    <%= p.label :title %> <br />
+    <%= p.text_field :title %>
+
+  </div>
+
+  <div class="field">
+    <%= p.label :url %> <br />
+    <%= p.text_field :url %>
+  </div>
+
+  <div class="actions">
+    <%= p.submit %>
+  </div>
+
+  <% end %>

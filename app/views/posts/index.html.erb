@@ -1,2 +1,26 @@
 <h1>Posts#index</h1>
 <p>Find me in app/views/posts/index.html.erb</p>
+
+<table>
+  <tr>
+    <th>Posts</th>
+    <th>Urls</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.url %></td>
+      <td><%= link_to 'Show', post%></td>
+      <td><%= link_to 'Edit', edit_post_path(post) %></td>
+      <td><%= link_to 'Destroy', post, method: :delete, data:{confirm: 'Are you sure?' }%></td>
+    </tr>
+
+  <% end %>
+</table>
+
+<br /> <%= link_to 'Submit a new Post!', new_post_path %>

@@ -1,2 +1,9 @@
 <h1>Posts#edit</h1>
 <p>Find me in app/views/posts/edit.html.erb</p>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @post %>
+<%= link_to 'Back', posts_path %>
+
+<br /> <%= link_to 'Submit a new Post!', new_post_path %>

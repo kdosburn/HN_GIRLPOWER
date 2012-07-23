@@ -1,13 +1,7 @@
 Hnclone::Application.routes.draw do
-  get "posts/_form"
 
-  get "posts/new"
+ resources :posts
 
-  get "posts/edit"
-
-  get "posts/index"
-
-  get "posts/show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
