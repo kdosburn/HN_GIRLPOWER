@@ -3,6 +3,7 @@ Hnclone::Application.routes.draw do
   root :to => 'posts#index'
 
   get "users/new"
+    match '/signup',  to: 'users#new'
 
  resources :posts
 
