@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+
   end
 
   def create
@@ -15,7 +16,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    sign_out
-    redirect_to root_path
-  end
+    logger.info("we are destroying")
+     sign_out
+     flash[:error] = "You're out"
+     redirect_to root_path
+   end
 end

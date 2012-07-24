@@ -62,6 +62,11 @@
       <div class="content">
         <div class="row">
            <div class="span9">
+              <% if flash[:error] %>
+                <p class='flash notice'>
+                  <%= flash[:error] %>
+                </p>
+              <% end %>
               <%= yield %>
             </div>
             <div class="span3">

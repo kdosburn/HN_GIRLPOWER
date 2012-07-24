@@ -1,5 +1,15 @@
 Hnclone::Application.routes.draw do
 
+  get "comments/_comments"
+
+  get "comments/new"
+
+  get "comments/show"
+
+  resources :comments do
+    resources :comments
+  end
+
   resources :votes
 
   root :to => 'posts#index'
@@ -7,12 +17,14 @@ Hnclone::Application.routes.draw do
   resources :users
   match '/signup',  to: 'users#new'
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
+  match '/signout', to: 'sessions#destroy'
 
 
 

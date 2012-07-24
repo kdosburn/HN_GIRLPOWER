@@ -1,17 +1,22 @@
-include ApplicationHelper
-
   class VotesController < ApplicationController
 
     def create
         post = Post.find(params[:post_id])
         user = current_user
       if user.id == post.user_id
-        redirect_to posts_path, :notice => "Can't vote on your own post"
+        redirect_to posts_path
+          flash[:error] = "You can't vote on your own post!"
       elsif signed_in?
-        vote = post.votes.build
-        vote.user_id = user.id
-        vote.save!
-        redirect_to(posts_path)
+        @vote = post.votes.build
+        @vote.user_id = user.id
+          if @vote.save
+            redirect_to(posts_path)
+          else
+            @posts_sorted = Post.all.sort_by { |post| - post.votes.count}
+            @posts = Post.page params[:page]
+            flash[:error] = "You can only vote on each post once!"
+            redirect_to posts_path
+          end
       else
         redirect_to(signin_path)
       end

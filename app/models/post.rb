@@ -12,6 +12,7 @@
 class Post < ActiveRecord::Base
   attr_accessible :title, :url, :user_id, :posts_by_votes
   has_many :votes
+  has_many :comments, :as => :commentable
   belongs_to :user
 
   validates_uniqueness_of :url

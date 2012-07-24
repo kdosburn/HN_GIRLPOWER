@@ -1,8 +1,5 @@
-include ApplicationHelper
-
   class PostsController < ApplicationController
-    def _form
-    end
+
 
     def new
       @post = Post.new
