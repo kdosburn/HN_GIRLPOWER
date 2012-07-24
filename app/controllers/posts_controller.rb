@@ -18,7 +18,6 @@ include ApplicationHelper
 
     def index
       @posts = Post.page params[:page]
-
     end
 
     def show
