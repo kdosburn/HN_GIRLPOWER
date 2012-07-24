@@ -17,6 +17,7 @@ include ApplicationHelper
     end
 
     def index
+      @posts_sorted = Post.all.sort_by { |post| - post.votes.count}
       @posts = Post.page params[:page]
     end
 

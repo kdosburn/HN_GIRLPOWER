@@ -10,7 +10,7 @@
 #
 
 class Post < ActiveRecord::Base
-  attr_accessible :title, :url, :user_id
+  attr_accessible :title, :url, :user_id, :posts_by_votes
   has_many :votes
   belongs_to :user
 
@@ -23,4 +23,5 @@ class Post < ActiveRecord::Base
     @post = Post.find(params[:id])
      (Time.now - @post.created_at) < 900
    end
+
 end
