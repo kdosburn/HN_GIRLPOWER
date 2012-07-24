@@ -10,7 +10,9 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :id
+  has_many :votes
+  has_many :posts
   has_secure_password
 
   before_create :create_remember_token

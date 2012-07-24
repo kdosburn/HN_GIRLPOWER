@@ -16,7 +16,10 @@
       <td><%= post.title %></td>
       <td><%= post.url %></td>
       <td><%= pluralize(post.votes.length, "vote") %></td>
-      <td><%= button_to '+1', votes_path(post_id: post.id), method: :post %></td>
+      <td><%= button_to '+1',
+
+
+      votes_path(post_id: post.id), method: :post %></td>
       <td><%= link_to 'Show', post%></td>
       <td><%= link_to 'Edit', edit_post_path(post) %></td>
       <td><%= link_to 'Destroy', post, method: :delete, data:{confirm: 'Are you sure?' }%></td>

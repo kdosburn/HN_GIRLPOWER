@@ -2,10 +2,15 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <h1>
+
         <%= gravatar_for @user %>
-        <%= @user.name %>
+        <br />
+        <h1>
+        Welcome toXXcombinator, <%= @user.name %>!
+
       </h1>
+      <br />
+      <h3><%= link_to 'Check out all the posts', posts_path %></h3>
     </section>
   </aside>
 </div>

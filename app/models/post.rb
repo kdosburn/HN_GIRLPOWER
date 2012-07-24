@@ -10,13 +10,14 @@
 #
 
 class Post < ActiveRecord::Base
-  attr_accessible :title, :url
+  attr_accessible :title, :url, :user_id
   has_many :votes
+  belongs_to :user
 
   validates_uniqueness_of :url
   validates_presence_of :title, :url
 
-  paginates_per 4
+  paginates_per 20
 
   def been_15min?
     @post = Post.find(params[:id])
