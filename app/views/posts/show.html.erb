@@ -1,18 +1,12 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
-
 <p id= "notice"><%= notice %>
 <p>
-  <b> Title </b>
-  <%= @post.title %>
-</p>
-<p>
-  <b> Url </b>
-   <%= @post.url %>
+  <h2> <%= @post.title %> </h2>
 </p>
 
+<h3> <%= @post.url %> </h3>
 
-<h2>Comments</h2>
+<br />
+<b><p>Comments:</p></b>
 
 <p><%= link_to 'Add a Comment', new_post_comment_path(@post) %></p>
 
@@ -20,7 +14,7 @@
   <%= render :partial => 'comments/comment', :collection => @post.comments %>
 </ul>
 
-<%= link_to 'Edit', edit_post_path(@post) %>
-<%= link_to 'Back', posts_path %>
+<br />
+<%= link_to 'Back To All Posts', posts_path %>
 
-<br /> <%= link_to 'Submit a new Post!', new_post_path %>
+<br /> <%= link_to 'Submit a BRAND NEW Post!', new_post_path %>

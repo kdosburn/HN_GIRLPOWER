@@ -18,7 +18,7 @@ class Post < ActiveRecord::Base
   validates_uniqueness_of :url
   validates_presence_of :title, :url
 
-  paginates_per 20
+  paginates_per 10
 
   def been_15min?
     @post = Post.find(params[:id])

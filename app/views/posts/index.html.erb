@@ -1,19 +1,12 @@
-<% if signed_in? %>
-<%= link_to "Sign OUT now!", signout_path, class: "btn btn-large btn-primary" %>
-<% else %>
-<%= link_to "Sign IN now!", signin_path, class: "btn btn-large btn-primary" %>
-<% end %>
-
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
-
+<h1>Today's Top Posts</h1>
+<br />
 
 <table>
 
   <tr>
     <th>Posts</th>
     <th>Urls</th>
-    <th></th>
+    <th>Votes</th>
     <th></th>
     <th></th>
     <th></th>
@@ -21,22 +14,25 @@
 
   <% @posts_sorted.each do |post| %>
     <tr>
-      <td><%= post.title %></td>
-      <td><%= post.url %></td>
-      <td><%= pluralize(post.votes.length, "vote") %></td>
+      <td><%= link_to post.title, post %></td>
+      <td><%= link_to post.url, post.url %></td>
+      <td><%= pluralize(post.votes.length,"vote") %></td>
       <td><%= button_to '+1',
 
 
       votes_path(post_id: post.id), method: :post %></td>
-      <td><%= link_to 'Show', post%></td>
+      <% if signed_in? && current_user.id == post.user_id %>
       <td><%= link_to 'Edit', edit_post_path(post) %></td>
-      <td><%= link_to 'Destroy', post, method: :delete, data:{confirm: 'Are you sure?' }%></td>
+      <% end %>
+      <% if signed_in? &&current_user.id == post.user_id %>
+      <td><%= link_to 'Delete', post, method: :delete, data:{confirm: 'Are you sure?' }%></td>
+      <% end %>
     </tr>
 
   <% end %>
 </table>
 
-<%= paginate @posts %>
+<%= paginate @posts_sorted %>
 
 
 

@@ -10,15 +10,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    warn "Parent before assign:"
-    warn @parent.inspect
-    # @parent = Post.find(self.post)
-    # warn @parent.inspect
-    warn "Parent comments before assign:"
-    warn @parent.comments.inspect
     @comment = @parent.comments.build(params[:comment])
-     warn "Parent comments after assign:"
-    warn @parent.comments.inspect
 
     if @comment.save
       redirect_to post_path(@comment.post), :notice => 'Thank you for your comment!'

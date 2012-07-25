@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
   def index
     @posts_sorted = Post.all.sort_by { |post| - post.votes.count}
-    @posts = Post.page params[:page]
+    @posts_sorted = Post.page params[:page]
   end
 
   def show
@@ -31,7 +31,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.user_id = current_user.id
-    user = current_user
       if @post.save
         redirect_to posts_path
       else
