@@ -1,11 +1,5 @@
 Hnclone::Application.routes.draw do
 
-  get "comments/_comments"
-
-  get "comments/new"
-
-  get "comments/show"
-
   resources :comments do
     resources :comments
   end

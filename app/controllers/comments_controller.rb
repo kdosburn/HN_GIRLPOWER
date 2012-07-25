@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
   before_filter :get_parent
 
-
-  def _comments
+  def index
+    @comments = Comment.all
   end
 
   def new
@@ -10,18 +10,34 @@ class CommentsController < ApplicationController
   end
 
   def create
+    warn "Parent before assign:"
+    warn @parent.inspect
+    # @parent = Post.find(self.post)
+    # warn @parent.inspect
+    warn "Parent comments before assign:"
+    warn @parent.comments.inspect
     @comment = @parent.comments.build(params[:comment])
+     warn "Parent comments after assign:"
+    warn @parent.comments.inspect
+
     if @comment.save
-      redirect_to post_path(@comment.post), flash.now[:error] = "Thanks for stopping by and commenting!"
+      redirect_to post_path(@comment.post), :notice => 'Thank you for your comment!'
     else
-      render :new
+      render action: "new"
     end
   end
 
   def show
+    @comment = Comment.find(params[:id])
   end
 
-private
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to "www.google.com"
+  end
+
+protected
 
   def get_parent
     @parent = Post.find_by_id(params[:post_id]) if params[:post_id]

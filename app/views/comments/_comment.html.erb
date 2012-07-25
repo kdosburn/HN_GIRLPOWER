@@ -1,0 +1,18 @@
+<h1>Comments#_comment</h1>
+<p>Find me in app/views/comments/_comment.html.erb</p>
+# app/views/comments/_comment.html.erb
+
+<li class="comment">
+
+  <div class="body">
+    <%= comment.body %>
+  </div>
+
+  <p><%= link_to 'Add a Reply', new_comment_comment_path(comment) %></p>
+
+  <% unless comment.comments.empty? %>
+    <ul class="comment_list">
+      <%= render :partial => 'comments/comment', :collection => comment.comments %>
+    </ul>
+  <% end %>
+</li>

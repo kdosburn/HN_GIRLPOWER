@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  #include SessionsHelper
-  helper_method :current_user
+  helper_method :current_user, :signed_in?
 
   def sign_in(user)
     cookies.permanent[:remember_token] = user.remember_token
