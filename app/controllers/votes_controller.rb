@@ -1,15 +1,14 @@
 class VotesController < ApplicationController
-  before_filter :get_this_parent, :only => [:create]
+  # before_filter :get_this_parent, :only => [:create]
 
   def create
-      post = Post.find(params[:post_id])
-      user = current_user
-    if user.id == post.user_id
+      parent = Post.find(params[:votable_id]) || parent = Comment.find(params[:votable_id])
+    if current_user.id == post.user_id
       redirect_to posts_path
         flash[:error] = "You can't vote on your own post!"
     elsif signed_in?
-      @vote = @parent.votes.build
-      @vote.user_id = user.id
+      @vote = parent.votes.build
+      @vote.user_id = current_user.id
 
         if @vote.save
           redirect_to(posts_path)

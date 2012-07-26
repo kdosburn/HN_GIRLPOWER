@@ -6,4 +6,5 @@ class Vote < ActiveRecord::Base
 
   validates_uniqueness_of :votable_id, {:scope => :user_id, :message => "you've already voted on this!"}
 
+
 end
