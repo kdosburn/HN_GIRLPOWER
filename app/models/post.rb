@@ -15,14 +15,23 @@ class Post < ActiveRecord::Base
      (Time.now - @post.created_at) < 900
    end
 
+   
+   
    def self.random_post
-      random_post = rand(0..(Post.all).to_a.length)
-      if !Post.exists?(@random_post)
-        random_post
-      else
-        random_post
-      end
-  end
+     if (c = count) != 0
+       find(:first, :offset =>rand(c))
+     end
+   end
+   
+   
+  #  def self.random_post
+  #     random_post = rand(0..(Post.all).to_a.length)
+  #     if !Post.exists?(@random_post)
+  #       random_post
+  #     else
+  #       random_post
+  #     end
+  # end
 
 
 
