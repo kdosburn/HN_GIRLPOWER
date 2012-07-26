@@ -16,11 +16,11 @@ class Post < ActiveRecord::Base
    end
 
    def self.random_post
-      @random_post = rand(0..Post.all.length)
+      random_post = rand(0..(Post.all).to_a.length)
       if !Post.exists?(@random_post)
         random_post
       else
-        @random_post
+        random_post
       end
   end
 
