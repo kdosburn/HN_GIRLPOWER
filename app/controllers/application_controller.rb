@@ -24,15 +24,6 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
 
-  def random_post
-    @random_post = rand(0..Post.all.length)
-    if !Post.exists?(@random_post)
-      random_post
-    else
-      @random_post
-    end
-  end
-
   def render_404
     render :file => "#{Rails.root}/public/404.html", :status => :not_found
   end
