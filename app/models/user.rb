@@ -17,6 +17,16 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
+# # ITERATION NINE -- KARMA
+#   def karma
+#     self.posts.inject(0) { |count, post| count + post.upvotes.length } +
+#     self.comments.inject(0) { |count, post| count + comment.upvotes.length }
+#   end
+
+# # UPVOTE METHOD for KARMA -- eventually should go in "POST.RB"
+# def upvotes
+#   self.votes.where(:value => 1)
+# end
 
   private
 
