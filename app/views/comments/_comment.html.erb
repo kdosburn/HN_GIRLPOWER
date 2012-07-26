@@ -1,8 +1,6 @@
 <li class="comment">
   <div class="body">
     <%= comment.body %>
-    <%= '--Added by'%>
-    <b><%= comment.author%></b>
     <%= link_to 'Add a Reply', new_comment_comment_path(comment) %>
     <br /><%= pluralize(comment.votes.length,"vote" ) %><%= button_to '+1', votes_path(comment_id: comment.id),
     method: :post %>

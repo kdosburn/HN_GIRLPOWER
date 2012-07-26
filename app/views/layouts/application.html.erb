@@ -47,6 +47,7 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="/">XXcombinator</a>
+
           <div class="container nav-collapse">
             <ul class="nav">
               <li><%= link_to "Why Join?", "/about"  %></li>
@@ -56,8 +57,10 @@
                  <li><%= link_to "Sign In", signin_path%></li>
                 <% end %>
                 <li><%= link_to "Random Post", post_path(Post.random_post) %></li>
-
             </ul>
+            <% if signed_in? %>
+            <div class="brand"><%= link_to "Welcome, #{current_user.name}!", current_user %> </div>
+            <% end %>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -96,7 +99,7 @@
                   <li><%= link_to "Why Join Us?", "/about"  %></li>
                   <% end %>
                   <li><%= link_to "Random Post", post_path(Post.random_post)  %></li>
-                  <li><%= link_to "Our Fav Post", "/posts/6"  %></li>
+                  <li><%= link_to "Our Fav Post", "/posts/31"  %></li>
 
                    </ul>
                     </div><!--/.well -->

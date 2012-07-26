@@ -28,10 +28,10 @@ class User < ActiveRecord::Base
 #   self.votes.where(:value => 1)
 # end
 
-  private
+private
 
-    def create_remember_token
-      self.remember_token = SecureRandom.urlsafe_base64
-    end
+  def create_remember_token
+    self.remember_token = SecureRandom.urlsafe_base64
+  end
 
 end

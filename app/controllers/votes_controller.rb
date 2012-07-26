@@ -29,7 +29,6 @@ def get_parent
   if params[:votable_id]
     @vote_parent = Post.find_by_id(params[:votable_id])
     @path = posts_path
-    # (params[:votable_id])
   elsif params[:comment_id]
     @vote_parent = Comment.find_by_id(params[:comment_id])
     @path = post_path(@vote_parent.post)
