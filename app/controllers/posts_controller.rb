@@ -14,8 +14,10 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts_sorted = Post.all.sort_by { |post| - post.votes.count}
-    @posts_sorted = Post.page params[:page]
+    # @posts_sorted = Post.highest_rated.page params[:page]
+    # @posts_sorted = Post.all.sort_by { |post| - post.votes.count}
+    @posts_sorted = Post.order(:title).page params[:page]
+    # @posts_sorted.sort_by { |post| - post.votes.count }
   end
 
   def show

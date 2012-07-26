@@ -4,9 +4,7 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, :polymorphic => true
 
 
-  # def current_comment
-  #   Comment.find(params[:id])
-  # end
+
 
   def post
     return @post if defined?(@post)

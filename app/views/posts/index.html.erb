@@ -16,7 +16,7 @@
     <tr>
       <td><%= link_to post.title, post %></td>
       <td><%= link_to post.url, post.url %></td>
-      <td><%= pluralize(post.votes.length,"vote") %></td>
+      <td><%= pluralize(post.votes.length,"vote" ) %></td>
       <td><%= button_to '+1',
 
 
@@ -32,8 +32,9 @@
   <% end %>
 </table>
 
+
 <%= paginate @posts_sorted %>
 
 
-
-<br /> <%= link_to 'Submit a new Post!', new_post_path %>
+<br /> <b><%= link_to 'Submit a new Post!', new_post_path %></b>
+<br />

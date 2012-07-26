@@ -2,8 +2,19 @@
   <div class="body">
     <%= comment.body %>
   </div>
+  <table>
 
-  <p><%= link_to 'Add a Reply', new_comment_comment_path(comment) %></p>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+  <td><%= link_to 'Add a Reply', new_comment_comment_path(comment) %></td>
+
+
+  </tr>
+  </table>
 
   <% unless comment.comments.empty? %>
     <ul class="comment_list">

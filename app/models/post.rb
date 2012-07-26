@@ -15,6 +15,8 @@ class Post < ActiveRecord::Base
   has_many :comments, :as => :commentable
   belongs_to :user
 
+  # scope :highest_rated, includes(:votes).group('post_id').order('ASC')
+
   validates_uniqueness_of :url
   validates_presence_of :title, :url
 
@@ -24,5 +26,6 @@ class Post < ActiveRecord::Base
     @post = Post.find(params[:id])
      (Time.now - @post.created_at) < 900
    end
+
 
 end
