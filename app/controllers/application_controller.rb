@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_user, :signed_in?
+  helper_method :current_user, :signed_in?, :random_post
 
   def sign_in(user)
     cookies.permanent[:remember_token] = user.remember_token
@@ -22,6 +22,10 @@ class ApplicationController < ActionController::Base
 
   def signed_in?
     !current_user.nil?
+  end
+
+  def random_post
+    @random_post = rand(0..Post.all.length)
   end
 
 
