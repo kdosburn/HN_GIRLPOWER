@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @parent.comments.build(params[:comment])
-
+    @comment.user_id = current_user.id
     if @comment.save
       redirect_to post_path(@comment.post), :notice => 'Thank you for your comment!'
     else

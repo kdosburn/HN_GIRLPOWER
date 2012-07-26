@@ -1,10 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_user, :signed_in?, :random_post, :render_404
+  helper_method :current_user, :signed_in?, :random_post, :render_404, :author
 
   def sign_in(user)
     cookies.permanent[:remember_token] = user.remember_token
     self.current_user = user
+  end
+
+  def author
+    user = User.find_by_id(self.user_id)
+    user.name
   end
 
   def current_user=(user)

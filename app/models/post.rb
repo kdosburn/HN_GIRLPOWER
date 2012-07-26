@@ -4,36 +4,20 @@ class Post < ActiveRecord::Base
   has_many :comments, :as => :commentable
   belongs_to :user
 
-  # scope :highest_rated, includes(:votes).group('post_id').order('ASC')
-
   validates_uniqueness_of :url
   validates_presence_of :title, :url
-  validates :url, :format => {:with => /(http:\/\/|https:\/\/)/ }
+  validates :url, :format => {:with => /(http:\/\/|https:\/\/)/, :message => "Add an http:// or https:// to your URL!"}
 
   def been_15min?
     @post = Post.find(params[:id])
      (Time.now - @post.created_at) < 900
    end
 
-   
-   
    def self.random_post
      if (c = count) != 0
        find(:first, :offset =>rand(c))
      end
    end
-   
-   
-  #  def self.random_post
-  #     random_post = rand(0..(Post.all).to_a.length)
-  #     if !Post.exists?(@random_post)
-  #       random_post
-  #     else
-  #       random_post
-  #     end
-  # end
-
-
 
 
 end

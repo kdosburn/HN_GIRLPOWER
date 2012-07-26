@@ -4,9 +4,6 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, :polymorphic => true
   has_many :votes, :as => :votable
 
-
-
-
   def post
     return @post if defined?(@post)
     @post = commentable.is_a?(Post) ? commentable : commentable.post
