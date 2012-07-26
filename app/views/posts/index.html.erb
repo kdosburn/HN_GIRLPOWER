@@ -20,7 +20,7 @@
       <td><%= button_to '+1',
 
 
-      votes_path(post_id: post.id), method: :post %></td>
+      votes_path(votable_id: post.id), method: :post %></td>
       <% if signed_in? && current_user.id == post.user_id %>
       <td><%= link_to 'Edit', edit_post_path(post) %></td>
       <% end %>

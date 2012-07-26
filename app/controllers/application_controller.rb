@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_user, :signed_in?, :random_post
+  helper_method :current_user, :signed_in?, :random_post, :render_404
 
   def sign_in(user)
     cookies.permanent[:remember_token] = user.remember_token
@@ -26,6 +26,15 @@ class ApplicationController < ActionController::Base
 
   def random_post
     @random_post = rand(0..Post.all.length)
+    if !Post.exists?(@random_post)
+      random_post
+    else
+      @random_post
+    end
+  end
+
+  def render_404
+    render :file => "#{Rails.root}/public/404.html", :status => :not_found
   end
 
 
