@@ -58,9 +58,7 @@
                 <% end %>
                 <li><%= link_to "Random Post", post_path(Post.random_post) %></li>
             </ul>
-            <% if signed_in? %>
-            <div class="brand"><%= link_to "Welcome, #{current_user.name}!", current_user %> </div>
-            <% end %>
+
           </div><!--/.nav-collapse -->
         </div>
       </div>
