@@ -56,7 +56,9 @@
                <% else %>
                  <li><%= link_to "Sign In", signin_path%></li>
                 <% end %>
-                <li><%= link_to "Random Post", post_path(Post.random_post)  %></li>
+                <% if Post.count > 0 %>
+                  <li><%= link_to "Random Post", post_path(Post.random_post)  %></li>
+                <% end %>
                 <% if signed_in? %>
                  <div class="brand"><%= link_to "Welcome, #{current_user.name}!", current_user %> </div>
                 <% end %>
@@ -98,7 +100,9 @@
                   <% else %>
                   <li><%= link_to "Why Join Us?", "/about"  %></li>
                   <% end %>
-                  <li><%= link_to "Random Post", post_path(Post.random_post) %></li>
+                  <% if Post.count > 0 %>
+                    <li><%= link_to "Random Post", post_path(Post.random_post)  %></li>
+                  <% end %>
                   <li><%= link_to "Our Fav Post", "/posts/31"  %></li>
 
                    </ul>

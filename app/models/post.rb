@@ -24,5 +24,15 @@ class Post < ActiveRecord::Base
      user.name
    end
 
+    def self.ordered_by(param)
+       case param
+       when 'title'     then Article.order('title')
+       when 'published' then Article.order('created_at DESC')
+         # length of body - all the spaces from the body = pseudo word count (body + body - spaces)
+         # Article.order('LENGTH(body)') <-- small version
+       when 'word_count'then Article.order('(LENGTH(body) - (LENGTH(REPLACE(body, " ", "")))) DESC')
+       else                  Article.all
+     end
+   end
 
 end

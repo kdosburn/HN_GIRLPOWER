@@ -19,6 +19,7 @@ Hnclone::Application.routes.draw do
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy'
+  get '/:page', to: 'static_pages#show'
 
 
 
