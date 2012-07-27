@@ -2,20 +2,18 @@ class VotesController < ApplicationController
   before_filter :get_parent, :only => [:create]
 
   def create
-    @vote = @vote_parent.votes.build(params[:vote])
-    if current_user.id == @vote_parent.user_id
+    if current_user == @vote_parent.user
       redirect_to posts_path
         flash[:error] = "You can't vote on your own comment or post!"
     elsif signed_in?
       @vote = @vote_parent.votes.build
-      @vote.user_id = current_user.id
+      @vote.vote_value = params[:vote_value]
+      @vote.user = current_user
         if @vote.save
           redirect_to(@path)
         else
-          @posts_sorted = Post.all.sort_by { |post| - post.votes.count}
-          @posts_sorted = Kaminari.paginate_array(@posts_sorted).page(params[:page]).per(10)
-          flash[:error] = "You can only vote on each comment or post once!"
-          redirect_to posts_path
+          @post = @vote.post
+          render 'posts/show'
         end
     else
       redirect_to(signin_path)
