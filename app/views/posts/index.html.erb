@@ -6,8 +6,9 @@
   <tr>
     <th>Posts</th>
     <th>Urls</th>
+    <th>Comments</th>
     <th>Votes</th>
-    <th></th>
+
     <th></th>
     <th></th>
   </tr>
@@ -16,7 +17,8 @@
     <tr>
       <td><%= link_to post.title, post %></td>
       <td><%= link_to post.url, post.url %></td>
-      <td><%= pluralize(post.votes.length,"vote" ) %></td>
+      <td><%= link_to post.comments.count, post.url %></td>
+      <td><%= pluralize(post.value,"vote" ) %></td>
       <td><%= button_to '+1',
       votes_path(votable_id: post.id, vote_value: 1), method: :post %></td>
       <td><%= button_to '-1',

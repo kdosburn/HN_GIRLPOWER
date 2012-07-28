@@ -1,10 +1,10 @@
 <li class="comment">
   <div class="body">
-    <%= comment.body %>
+    <%= comment.body %> <br />
     <%= link_to 'Add a Reply', new_comment_comment_path(comment) %>
-    <br /><%= pluralize(comment.votes.length,"vote" ) %><%= button_to '+1', votes_path(comment_id: comment.id),
-    method: :post %>
-
+    <%= pluralize(comment.value,"vote" ) %>
+    <%= ( link_to '+1', votes_path(comment_id: comment.id, vote_value: 1), method: :post) %>
+    <%= ( link_to '-1', votes_path(comment_id: comment.id, vote_value: -1), method: :post) %>
   </div>
 
   <% unless comment.comments.empty? %>

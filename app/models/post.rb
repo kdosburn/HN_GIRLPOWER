@@ -35,4 +35,10 @@ class Post < ActiveRecord::Base
      end
    end
 
+   def value
+     values = 0
+       Post.find(self.id).votes.each { |vote| vote.vote_value ? values += vote.vote_value : values += 0}
+     values
+   end
+
 end

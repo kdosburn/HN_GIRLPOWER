@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   def index
     # Post.order(:vote_count).page
-    @posts_sorted = Post.all.sort_by { |post| - post.votes.count}
+    @posts_sorted = Post.all.sort_by { |post| - post.value}
     @posts_sorted = Kaminari.paginate_array(@posts_sorted).page(params[:page]).per(10)
   end
 

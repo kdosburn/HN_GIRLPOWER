@@ -10,12 +10,5 @@ class Vote < ActiveRecord::Base
     @post = votable.is_a?(Post) ? votable : votable.post
   end
 
+
 end
-
-
-# <%= link_to "VOTE-VALUE-BUTTON", votes_path(params.merge(:vote_value => 2)) %>
-
-
-# QUESTION: How do we use def create to define the vote value?
-# EX: input "+1" Vote.create(:vote_value => "positive")
-# EX: input "-1" Vote.create(:vote_value => "negative")
