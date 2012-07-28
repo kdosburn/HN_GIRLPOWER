@@ -6,28 +6,29 @@
   <tr>
     <th>Posts</th>
     <th>Urls</th>
+    <th>Votes&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
     <th>Comments</th>
-    <th>Votes</th>
-
-    <th></th>
-    <th></th>
+    <th>Author</th>
   </tr>
 
   <% @posts_sorted.each do |post| %>
     <tr>
-      <td><%= link_to post.title, post %></td>
-      <td><%= link_to post.url, post.url %></td>
-      <td><%= link_to post.comments.count, post.url %></td>
+      <td><strong><span style = "font-size: 24px"><%= link_to post.title, post %></span></strong>
+      (<%= link_to post.url, post.url %>)</td>
       <td><%= pluralize(post.value,"vote" ) %></td>
       <td><%= button_to '+1',
       votes_path(votable_id: post.id, vote_value: 1), method: :post %></td>
       <td><%= button_to '-1',
       votes_path(votable_id: post.id, vote_value: -1), method: :post %></td>
-
+      <td><%= link_to post.comments.count, post.url %></td>
+      <td><%=post.author%></td>
       <% if signed_in? && current_user == post.user %>
       <td><%= link_to 'Edit', edit_post_path(post) %></td>
       <td><%= link_to 'Delete', post, method: :delete, data:{confirm: 'Are you sure?' }%></td>
       <% end %>
+
     </tr>
 
   <% end %>

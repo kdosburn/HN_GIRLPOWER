@@ -88,10 +88,14 @@
                <%= link_to "...or, create an account", signup_path %>
                <% end %>
                <br />
+
                 <br />
+                <%= gravatar_for current_user %>
+                <br /><br />
 
               <div class="well sidebar-nav">
                 <h3>Side Dish</h3>
+
                 <ul class="nav nav-list">
                   <!-- <li class="nav-header">In case this page doesn't have enough links for you...</li> -->
                   <% if signed_in? %>

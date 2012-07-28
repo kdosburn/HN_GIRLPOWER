@@ -7,6 +7,10 @@
     <%= ( link_to '-1', votes_path(comment_id: comment.id, vote_value: -1), method: :post) %>
   </div>
 
+  <%= 'Submitted by: ' %>
+  <%= link_to comment.author, user_path %>
+
+
   <% unless comment.comments.empty? %>
     <ul class="comment_list">
       <%= render :partial => 'comments/comment', :collection => comment.comments %>
