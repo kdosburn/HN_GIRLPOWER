@@ -36,6 +36,7 @@ end
 gem 'jquery-rails'
 gem "twitter-bootstrap-rails"
 gem 'kaminari'
+gem 'heroku'
 
 
 # To use ActiveModel has_secure_password
